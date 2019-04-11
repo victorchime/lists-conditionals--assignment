@@ -18,12 +18,10 @@ class App extends Component {
 
   removeCharacter = (charIndex) => {
     let inputTextCopyArray = this.state.inputTextValue.split("");
-    inputTextCopyArray = inputTextCopyArray.splice(charIndex, 1)
-    console.log = inputTextCopyArray
-    let finalText = inputTextCopyArray.join('');
+    inputTextCopyArray.splice(charIndex, 1)
 
     this.setState({
-      inputTextValue: finalText
+      inputTextValue: inputTextCopyArray.join('')
     })
   }
 
@@ -31,7 +29,7 @@ class App extends Component {
     const inputValue = this.state.inputTextValue.split('');
 
     return inputValue.map((charElement, charIndex) => {
-      return  <CharComponent initialInputFieldChar={charElement} onClick={charIndex => this.removeCharacter(charIndex)} />
+      return  <CharComponent initialInputFieldChar={charElement} onClick={() => this.removeCharacter(charIndex)} />
     })
   }
 
